@@ -169,6 +169,11 @@ class MWOAuth(object):
         session['mwoauth_username'] = identity['username']
 
         return session['mwoauth_username']
+    
+    def get_current_identity(self):
+        return self.handshaker.identify(
+            mwoauth.AccessToken(**session['mwoauth_access_token'])
+        )
 
 
 def _str(val):
